@@ -80,24 +80,56 @@
 
 		})
 	}
-	function storedelete() {
-		//alert("asd");
-		let storename = $("#item".this).val();
-		alert(storename);
-		
-		$.ajax({
+
+	function storedelete(button) {
+	    // 클릭한 버튼이 속한 itemwrap 요소의 h2 값을 가져옵니다.
+	    let storeName = $(button).siblings(".item").text();
+	    //alert(storeName);
+	    
+	    $.ajax({
 			type: "DELETE",
-			url: "/prj4/ss/"+storename, //path Variable  ,
-		
+			url: "/prj4/ss/"+storeName, //path Variable  ,
+			
 			success : function (data){
-				alert(data);
+				window.location.reload();
 			},
 			error: function() {
 				alert( "error");
 			}
 			
 		});
+	    // 여기서 storeName을 사용하여 원하는 작업을 수행할 수 있습니다.
 	}
+
+	function storeedit(button){
+		
+		 $.ajax(
+		 	{
+		 		type:"post" ,
+		 		url: "/day2/sss" ,
+		 		success : function( data){
+		 			let result  = editHTML(data);
+		 			$(button).parent(".itemwrap").html(result);
+		 		},
+		 		error: function(){
+		 			alert( "error");
+		 		}
+		 	}		 
+		 );	 
+	 }
+	 
+	 function editHTML(d ){
+		 console.log( d);
+			let result = '<input class="inputinsert" id="storename" type="text" placeholder="매장이름" value="'d.storename'"><br>';
+			result +='<input class="inputinsert" id="address" type="text" placeholder="매장주소" value="'d.address'"><br>';
+			result += '<input class="inputinsert" id="name" type="text" placeholder="사업자이름" value="'d.name'"><br>';
+			result +='<input class="inputinsert" id="tel" type="text" placeholder="사업자전화번호" value="'d.tel'"><br>';
+			result += '<input class="inputinsert" id="bnum" type="text" placeholder="사업자번호" value="'d.bnum'"><br>';
+			result += '<button onclick="insert()"> 추가하기</button>';
+			
+		 return result;
+	 } 
+	
 </script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -106,15 +138,16 @@
 
 	<div class="wrap">
 		<c:forEach var="item" items="${list}">
-			<div class="infodiv itemwrap">
-				<h2 id="item" class="item">${item.storename }</h2>
-				<button>메뉴관리</button>
-				<button>수정</button>
-				<button id="storedelete" onclick="storedelete()">삭제</button>
+			<div id="itemwrap" class="infodiv itemwrap">
+				<h2 class="item">${item.storename }</h2>
+				<button class="menuButton">메뉴관리</button>
+				<button  class="editButton" onclick="storeedit(this)">수정</button>
+				<button id="storedelete" onclick="storedelete(this)">삭제</button>
 			</div>
 		</c:forEach>
 		<div class="infodiv plusdiv" id="result">
 			<button onclick="insertview()">매장생성</button>
+			
 		</div>
 	</div>
 

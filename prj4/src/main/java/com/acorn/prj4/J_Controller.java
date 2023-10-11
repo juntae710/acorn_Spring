@@ -34,12 +34,31 @@ public class J_Controller {
 	}
 	
 	@ResponseBody
-	@RequestMapping( value="/ss/{storename}" , method=RequestMethod.DELETE)
-	public void delete(@PathVariable J_Store storename) {
-		s.delete(storename);
+	@RequestMapping( value="/ss/{storeName}" , method=RequestMethod.DELETE)
+	public void delete(@PathVariable String storeName) {
+		System.out.println("storeName" + storeName);
+		s.delete(storeName);
 	}
 	
+	@ResponseBody
+	@RequestMapping( value="/ss" , method=RequestMethod.PUT)
+	public void update(@RequestBody J_Store Store) {
+		s.updata(Store);
+	}
 	
+	@ResponseBody
+	@RequestMapping( value="/sss" , method=RequestMethod.POST)
+	public J_Store getList(@RequestBody String Store) {
+		J_Store list = s.updataselect(Store);
+		return list;
+	}
+//	@ResponseBody
+//	@RequestMapping( value="/sss" , method=RequestMethod.GET)
+//	public J_Store getList(@RequestBody String Store){		
+//		
+//		J_Store list = s.updataselect(Store);
+//		return list;
+//	}
 
 //	@ResponseBody
 //	@RequestMapping( value="/ss2" , method=RequestMethod.POST)

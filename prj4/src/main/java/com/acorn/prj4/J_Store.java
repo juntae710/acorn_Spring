@@ -25,6 +25,63 @@ public J_Store() {
 }
 
 
+public String getStorename() {
+	return storename;
+}
+
+
+public void setStorename(String storename) {
+	this.storename = storename;
+}
+
+
+public String getAddress() {
+	return address;
+}
+
+
+public void setAddress(String address) {
+	this.address = address;
+}
+
+
+public String getName() {
+	return name;
+}
+
+
+public void setName(String name) {
+	this.name = name;
+}
+
+
+public String getTel() {
+	return tel;
+}
+
+
+public void setTel(String tel) {
+	this.tel = tel;
+}
+
+
+public String getBnum() {
+	return bnum;
+}
+
+
+public void setBnum(String bnum) {
+	this.bnum = bnum;
+}
+
+
+@Override
+public String toString() {
+	return "J_Store [storename=" + storename + ", address=" + address + ", name=" + name + ", tel=" + tel + ", bnum="
+			+ bnum + "]";
+}
+
+
 
 
 }
