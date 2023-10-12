@@ -102,12 +102,14 @@
 	}
 
 	function storeedit(button){
-		
+		 let storeName = $(button).siblings(".item").text();
+		 alert(storeName);
 		 $.ajax(
 		 	{
-		 		type:"post" ,
-		 		url: "/day2/sss" ,
+		 		type:"get" ,
+		 		url: "/prj4/ss/"+storeName ,
 		 		success : function( data){
+		 			consile.log(data);
 		 			let result  = editHTML(data);
 		 			$(button).parent(".itemwrap").html(result);
 		 		},
@@ -118,8 +120,7 @@
 		 );	 
 	 }
 	 
-	 function editHTML(d ){
-		 console.log( d);
+ function editHTML(d){
 			let result = '<input class="inputinsert" id="storename" type="text" placeholder="매장이름" value="'d.storename'"><br>';
 			result +='<input class="inputinsert" id="address" type="text" placeholder="매장주소" value="'d.address'"><br>';
 			result += '<input class="inputinsert" id="name" type="text" placeholder="사업자이름" value="'d.name'"><br>';
@@ -128,7 +129,7 @@
 			result += '<button onclick="insert()"> 추가하기</button>';
 			
 		 return result;
-	 } 
+	 }  
 	
 </script>
 <meta charset="UTF-8">

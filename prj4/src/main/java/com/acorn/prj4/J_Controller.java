@@ -46,19 +46,15 @@ public class J_Controller {
 		s.updata(Store);
 	}
 	
+
 	@ResponseBody
-	@RequestMapping( value="/sss" , method=RequestMethod.POST)
-	public J_Store getList(@RequestBody String Store) {
-		J_Store list = s.updataselect(Store);
+	@RequestMapping( value="/ss/{storeName}" , method=RequestMethod.GET)
+	public J_Store getList(@PathVariable String storeName){		
+		System.out.println(storeName);
+		J_Store list = s.updataselect(storeName);
+		System.out.println(list);
 		return list;
 	}
-//	@ResponseBody
-//	@RequestMapping( value="/sss" , method=RequestMethod.GET)
-//	public J_Store getList(@RequestBody String Store){		
-//		
-//		J_Store list = s.updataselect(Store);
-//		return list;
-//	}
 
 //	@ResponseBody
 //	@RequestMapping( value="/ss2" , method=RequestMethod.POST)
