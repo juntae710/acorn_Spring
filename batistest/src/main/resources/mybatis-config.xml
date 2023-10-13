@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+		PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-config.dtd">
+		<!-- 타입부분 확인하기 -->
+<configuration>
+	<typeAliases>
+		<typeAlias alias="Member" type="com.acorn.batistest.Member"/>
+	</typeAliases>
+</configuration>

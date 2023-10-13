@@ -19,6 +19,9 @@ public class ApiController {
 	@Autowired
 	ApiExplorer2 api2;
 	
+	@Autowired
+	ApiExplorer3 api3;
+	
 	@ResponseBody
 	@GetMapping(value ="/apitest", produces = "application/json;charset=UTF-8")
 	public String testapi() throws IOException {
@@ -36,4 +39,25 @@ public class ApiController {
 		return "apitest2";
 		
 	}
+	
+
+	@RequestMapping("/apitest3")
+	public String testapi3(Model model) throws IOException {
+		String result = api3.testapi();
+		ArrayList<PMClass2> list =api3.fromJSONtoItems(result);
+	model.addAttribute("list", list);
+		return "apitest3";
+		
+	}
+	
+
+	@RequestMapping("/apitest4")
+	public String testapi4(Model model) throws IOException {
+		String result = api2.testapi();
+		ArrayList<PMClass> list =api2.fromJSONtoItems(result);
+	model.addAttribute("list", list);
+		return "apitest4";
+		
+	}
+	
 }

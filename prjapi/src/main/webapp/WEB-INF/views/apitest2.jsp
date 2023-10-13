@@ -9,22 +9,38 @@
 div{
 border: 2px solid black;
 border-radius: 20px;
+padding: 20px;
 }
 img{
-width: 200px;
-height: 200px;
+height: 222px;
+}
+.a{
+height: 222px;
+}
+.b{
+width: 1200px;
+margin: 0 auto;
+margin-bottom: 20px;
 }
 </style>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-<div class="a">
-환경 정보
+<div >
 <c:forEach var="item" items="${list}" >
-<div>
-<h2>${item.informData}</h2>
-<div>
+<c:if test="${item.imageUrl1 !='null'}">
+<div class="b">
+<h2>${item.informData} </h2>
+<p>
+${item.informCode} ※통보코드(PM10, PM25, O3) <br>
+</p>
+<p>
+${item.informCause} <br>
+${item.informOverall} <br>
+
+</p>
+<div class="a">
 <img alt="" src="${item.imageUrl1}">
 <img alt="" src="${item.imageUrl2}">
 <img alt="" src="${item.imageUrl3}">
@@ -32,10 +48,12 @@ height: 200px;
 <img alt="" src="${item.imageUrl5}">
 <img alt="" src="${item.imageUrl6}">
 </div>
-${item.informCause}
-${item.informOverall}
-${item.dataTime}
+<p>
+${item.informGrade} <br>
+발표 시간 : ${item.dataTime}
+</p>
 </div>
+</c:if>
 </c:forEach>
 </div>
 </body>

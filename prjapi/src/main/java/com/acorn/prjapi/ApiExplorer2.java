@@ -35,41 +35,43 @@ public class ApiExplorer2 {
 		JSONArray items = body.getJSONArray("items");
 
 		ArrayList<PMClass> list = new ArrayList<>();
-
 		for (int i = 0; i < items.length(); i++) {
 			JSONObject item = items.getJSONObject(i);
 			//System.out.println(item);
 		
-			if (item.get("informCode") == "PM25") {
-				String imageUrl1 = item.getString("imageUrl1");
-				String imageUrl2 = item.getString("imageUrl2");
-				String imageUrl3 = item.getString("imageUrl3");
-				String imageUrl4 = item.getString("imageUrl4");
-				String imageUrl5 = item.getString("imageUrl5");
-				String imageUrl6 = item.getString("imageUrl6");
-				String informCode = item.getString("informCode");
-				String informCause = item.getString("informCause");
-				String informOverall = item.getString("informOverall");
-				String informGrade = item.getString("informGrade");
-				String dataTime = item.getString("dataTime");
-				String informData = item.getString("informData");
+			String imageUrl1 = String.valueOf(item.get("imageUrl1"));
+			String imageUrl2 = String.valueOf(item.get("imageUrl2"));
+			String imageUrl3 = String.valueOf(item.get("imageUrl3"));
+			String imageUrl4 = String.valueOf(item.get("imageUrl4"));
+			String imageUrl5 = String.valueOf(item.get("imageUrl5"));
+			String imageUrl6 = String.valueOf(item.get("imageUrl6"));
+			String informCode = item.getString("informCode");
+			String informCause = item.getString("informCause");
+			String informOverall = item.getString("informOverall");
+			String informGrade = item.getString("informGrade");
+			String dataTime = item.getString("dataTime");
+			String informData = item.getString("informData");
+			
+			
+				
+			
 
-				PMClass pm = new PMClass();
-				 pm.setImageUrl1(imageUrl1);
-				pm.setImageUrl2(imageUrl2);
-				pm.setImageUrl3(imageUrl3);
-				pm.setImageUrl4(imageUrl4);
-				pm.setImageUrl5(imageUrl5);
-				pm.setImageUrl6(imageUrl6);
-				pm.setDataTime(dataTime);
-				pm.setInformCause(informCause);
-				pm.setInformCode(informCode);
-				pm.setInformData(informData);
-				pm.setInformGrade(informGrade);
-				pm.setInformOverall(informOverall);
-				list.add(pm);
-			}
 
+
+			PMClass pm = new PMClass();
+			 pm.setImageUrl1( imageUrl1);
+			pm.setImageUrl2(imageUrl2);
+			pm.setImageUrl3(imageUrl3);    // Object  obj = null , Object  o="stsring"
+			pm.setImageUrl4(imageUrl4);    //   .get  
+			pm.setImageUrl5(imageUrl5);
+			pm.setImageUrl6(imageUrl6);
+			pm.setDataTime(dataTime);
+			pm.setInformCause(informCause);
+			pm.setInformCode(informCode);
+			pm.setInformData(informData);
+			pm.setInformGrade(informGrade);
+			pm.setInformOverall(informOverall);
+			list.add(pm);
 			
 		}
 		//System.out.println("ArrayList ==>" + list);
