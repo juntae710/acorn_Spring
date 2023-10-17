@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.acorn.MemberMapper">
+
+    
+    <select id="selectAll" resultType="Member">
+        SELECT *
+        FROM testcostmer       
+    </select>
+    
+    
+ 
+	
+       <select id="selectOne" resultType="Member" parameterType="String">
+        SELECT *
+        FROM membertb
+        where id = #{id}    
+    </select>
+
+
+	   	<insert id="insert" parameterType="orderDTO"  >
+	   	
+	    <selectKey resultType="int" keyProperty="cosno" order="BEFORE">
+	    	select tc_cosno.nextval from dual
+	    </selectKey>
+	    
+	    <![CDATA[
+			insert into ordertbl(cosno,  cosname,  cosage)
+							     values(#{cosno},		
+							            #{cosname},					           
+									    #{cosage})
+    	]]>
+	</insert>
+</mapper>
